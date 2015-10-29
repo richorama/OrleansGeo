@@ -17,7 +17,7 @@ await grain.SetValueAndPosition("MY_VALUE", new Position(52.0999542, 1.0969174),
 var search = GrainClient.GrainFactory.GetGrain<ISearchGrain>(0);
 var results = await search.Search(new Position(52.0999542, 1.0969222), 1000);
 
-// results is am array of all key/value/position triples within a 1000m radius
+// results is an array of all key/value/position triples within a 1000m radius
 
 results[0].Key 		// "MY_KEY"
 results[0].Value 	// "MY_VALUE"
