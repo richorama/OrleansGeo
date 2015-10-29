@@ -37,7 +37,7 @@ When the search grain is called, it calculates an appropriate level in the quad 
 
 ## Problems
 
-Moving a position involved updating several grains. There is no transaction capability in Orleans, and failure to contact these grains could result in corrupt results.
+Moving a position involves updating several grains. There is no transaction capability in Orleans, and failure to contact these grains could result in corrupt results.
 
 It's unclear how this would scale (if at all).
 
