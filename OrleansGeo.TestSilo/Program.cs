@@ -27,7 +27,7 @@ namespace OrleansGeo.TestSilo
 
             var results2 = await search.Search(new Position(52.0999542, 1.0969222), 1000);
 
-            Debug.Assert(results.Length == 0, "unexpected results found");
+            Debug.Assert(results2.Length == 0, "unexpected results found");
 
         }
 

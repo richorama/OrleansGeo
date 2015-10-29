@@ -40,7 +40,7 @@ namespace OrleansGeo.Grains
                     };
                 }));
             }
-            return results.ToArray();
+            return results.Where(x => x.Distance <= radius).ToArray();
         }
 
 
