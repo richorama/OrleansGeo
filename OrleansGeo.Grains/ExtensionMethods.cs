@@ -349,7 +349,6 @@ namespace OrleansGeo.Grains
 
         public static double DistanceTo(this Position position1, Position position2)
         {
-            var R = 6371000; // metres
             var φ1 = DegreesToRadians(position1.Latitude);
             var φ2 = DegreesToRadians(position2.Latitude);
             var Δφ = DegreesToRadians(position2.Latitude - position1.Latitude);
@@ -358,7 +357,7 @@ namespace OrleansGeo.Grains
             var a = Math.Sin(Δφ / 2) * Math.Sin(Δφ / 2) + Math.Cos(φ1) * Math.Cos(φ2) * Math.Sin(Δλ / 2) * Math.Sin(Δλ / 2);
             var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
 
-            return R * c;
+            return EarthRadius * c;
         }
 
         private static double DegreesToRadians(double deg)
