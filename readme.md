@@ -17,7 +17,7 @@ await grain.SetValueAndPosition("MY_VALUE", new Position(52.0999542, 1.0969174),
 var search = GrainClient.GrainFactory.GetGrain<ISearchGrain>(0);
 var results = await search.Search(new Position(52.0999542, 1.0969222), 1000);
 
-// results is am array of all key/value/position triples within a 1000m radius
+// results is an array of all key/value/position triples within a 1000m radius
 
 results[0].Key 		// "MY_KEY"
 results[0].Value 	// "MY_VALUE"
@@ -33,11 +33,13 @@ in the quad tree keeps track of the items contained under it.
 
 When a position is updated, the grain informs the grains in the quad tree hierarchy, but only walks up the hierarchy as far as needed  (sometimes a change in position will only ripple a small way up the hierarchy, if at all).
 
-When the search grain is called, it caluclates an appropriate level in the quad tree hierarchy, based on the supplied radius, and the interrogates all the grains that could contain positions within the radius.
+When the search grain is called, it calculates an appropriate level in the quad tree hierarchy, based on the supplied radius, to build a list of all grains which could be within the radius. It then interrogates all of these grains to get their values and positions, and returns these as the results.
 
 ## Problems
 
 Moving a position involved updating several grains. There is no transaction capability in Orleans, and failure to contact these grains could result in corrupt results.
+
+It's unclear how this would scale (if at all).
 
 ## License
 
