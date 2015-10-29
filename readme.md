@@ -33,7 +33,7 @@ in the quad tree keeps track of the items contained under it.
 
 When a position is updated, the grain informs the grains in the quad tree hierarchy, but only walks up the hierarchy as far as needed  (sometimes a change in position will only ripple a small way up the hierarchy, if at all).
 
-When the search grain is called, it calculates an appropriate level in the quad tree hierarchy, based on the supplied radius, to build a list of all grains which could be within the radius. It then interrogates all of these grains to get their values and positions, and returns these as the results.
+When the search grain is called, it calculates an appropriate level in the quad tree hierarchy, based on the supplied radius, to build a list of all quad key grains which could contains results be within the radius. It then calls these quad tree grains to build the results.
 
 ## Problems
 
